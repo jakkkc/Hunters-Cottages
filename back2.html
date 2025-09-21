@@ -91,24 +91,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-secondary {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -139,13 +121,6 @@
             max-width: 300px;
             margin: 0 auto 30px;
             filter: brightness(0) invert(1);
-        }
-
-        .hero-cta-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
         }
 
         /* About Section */
@@ -460,9 +435,6 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
 
         .excursion-image {
@@ -477,9 +449,6 @@
 
         .excursion-content {
             padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
 
         .excursion-content h3 {
@@ -491,11 +460,6 @@
             color: var(--primary);
             font-weight: 600;
             margin-bottom: 15px;
-        }
-
-        .excursion-content .btn {
-            margin-top: auto;
-            align-self: flex-start;
         }
 
         /* Gallery Section */
@@ -587,63 +551,6 @@
             margin-right: 15px;
             font-size: 1.2rem;
             margin-top: 3px;
-        }
-
-        /* Payment Section */
-        .payment-section {
-            display: none;
-            padding: 30px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-
-        .payment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .payment-option {
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .payment-option:hover {
-            border-color: var(--primary);
-        }
-
-        .payment-option.selected {
-            border-color: var(--primary);
-            background-color: rgba(183, 101, 66, 0.1);
-        }
-
-        .payment-option i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--secondary);
-        }
-
-        .payment-form {
-            margin-top: 20px;
-        }
-
-        /* Conference Booking Section */
-        .conference-booking {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-
-        /* Excursions Booking Section */
-        .excursions-booking {
-            padding: 100px 0;
-            background-color: white;
         }
 
         /* Contact Section */
@@ -790,11 +697,6 @@
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .hero-cta-container {
-                flex-direction: column;
-                align-items: center;
-            }
         }
 
         @media (max-width: 768px) {
@@ -855,9 +757,7 @@
                     <li><a href="#facilities">Facilities</a></li>
                     <li><a href="#conference">Conference</a></li>
                     <li><a href="#excursions">Excursions</a></li>
-                    <li><a href="#booking">Book Stay</a></li>
-                    <li><a href="#conference-booking">Book Conference</a></li>
-                    <li><a href="#excursions-booking">Book Excursion</a></li>
+                    <li><a href="#booking">Book Now</a></li>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -871,11 +771,7 @@
             <img src="img/white_logo.png" alt="Hunters Paradise Cottages" class="hero-logo">
             <h1>Hunters Paradise Cottages</h1>
             <p>A luxurious escape inspired by nature, tradition, and harmony.</p>
-            <div class="hero-cta-container">
-                <a href="#booking" class="btn">Book Your Stay</a>
-                <a href="#conference-booking" class="btn-secondary">Book Conference</a>
-                <a href="#excursions-booking" class="btn-secondary">Book Excursion</a>
-            </div>
+            <a href="#booking" class="btn">Book Your Stay</a>
         </div>
     </section>
 
@@ -926,7 +822,6 @@
                             <li>Luxury amenities</li>
                             <li>Green-themed decor</li>
                         </ul>
-                        <a href="#booking" class="btn">Book Now</a>
                     </div>
                 </div>
 
@@ -950,7 +845,6 @@
                             <li>Private garden area</li>
                             <li>Nature-inspired decor</li>
                         </ul>
-                        <a href="#booking" class="btn">Book Now</a>
                     </div>
                 </div>
 
@@ -974,7 +868,6 @@
                             <li>Family-friendly amenities</li>
                             <li>Spacious living area</li>
                         </ul>
-                        <a href="#booking" class="btn">Book Now</a>
                     </div>
                 </div>
 
@@ -998,7 +891,6 @@
                             <li>Family-sized bathroom</li>
                             <li>Play area for children</li>
                         </ul>
-                        <a href="#booking" class="btn">Book Now</a>
                     </div>
                 </div>
 
@@ -1022,7 +914,6 @@
                             <li>Premium amenities</li>
                             <li>Exclusive dining options</li>
                         </ul>
-                        <a href="#booking" class="btn">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -1215,7 +1106,6 @@
                         <li>Facilitator</li>
                         <li>Wi-Fi access</li>
                     </ul>
-                    <a href="#conference-booking" class="btn">Book Conference Now</a>
                 </div>
             </div>
         </div>
@@ -1236,7 +1126,6 @@
                         <h3>Mt. Elgon Tour</h3>
                         <p>Explore the majestic Mt. Elgon with our guided tours. Experience breathtaking views, unique flora and fauna, and unforgettable adventures.</p>
                         <p class="excursion-price">Kes. 35,000 (max 7 pax)</p>
-                        <a href="#excursions-booking?type=mt-elgon" class="btn">Book Now</a>
                     </div>
                 </div>
                 <div class="excursion-card">
@@ -1247,7 +1136,6 @@
                         <h3>Nature & Culture Tour</h3>
                         <p>Visit Miti Park, Nabuyole Falls, Sang'alo Rocks, and Nabongo Cultural Center in one comprehensive tour of the region's natural and cultural highlights.</p>
                         <p class="excursion-price">Kes. 12,000 (max 7 pax)</p>
-                        <a href="#excursions-booking?type=nature-culture" class="btn">Book Now</a>
                     </div>
                 </div>
                 <div class="excursion-card">
@@ -1258,7 +1146,6 @@
                         <h3>Kakapel National Museum</h3>
                         <p>Discover the rich cultural heritage and historical artifacts at Kakapel National Museum, showcasing the region's fascinating history.</p>
                         <p class="excursion-price">Kes. 15,000 (max 7 pax)</p>
-                        <a href="#excursions-booking?type=kakapel" class="btn">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -1362,73 +1249,6 @@
                         </div>
                         <button type="submit" class="btn">Proceed to Payment</button>
                     </form>
-
-                    <div id="paymentSection" class="payment-section">
-                        <h3>Payment Details</h3>
-                        <div class="payment-options">
-                            <div class="payment-option" data-method="mpesa">
-                                <i class="fas fa-mobile-alt"></i>
-                                <h4>M-Pesa</h4>
-                                <p>Pay via M-Pesa</p>
-                            </div>
-                            <div class="payment-option" data-method="card">
-                                <i class="fas fa-credit-card"></i>
-                                <h4>Credit Card</h4>
-                                <p>Pay with card</p>
-                            </div>
-                            <div class="payment-option" data-method="bank">
-                                <i class="fas fa-university"></i>
-                                <h4>Bank Transfer</h4>
-                                <p>Direct bank transfer</p>
-                            </div>
-                        </div>
-
-                        <div class="payment-form">
-                            <div id="mpesaForm" class="payment-method-form">
-                                <div class="form-group">
-                                    <label for="mpesaNumber">M-Pesa Phone Number</label>
-                                    <input type="tel" id="mpesaNumber" placeholder="e.g. 07XX XXX XXX">
-                                </div>
-                                <button type="button" class="btn" id="payWithMpesa">Pay via M-Pesa</button>
-                            </div>
-
-                            <div id="cardForm" class="payment-method-form" style="display: none;">
-                                <div class="form-group">
-                                    <label for="cardNumber">Card Number</label>
-                                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
-                                </div>
-                                <div class="form-group">
-                                    <label for="cardName">Name on Card</label>
-                                    <input type="text" id="cardName">
-                                </div>
-                                <div class="form-group">
-                                    <label for="expiry">Expiry Date</label>
-                                    <input type="text" id="expiry" placeholder="MM/YY">
-                                </div>
-                                <div class="form-group">
-                                    <label for="cvv">CVV</label>
-                                    <input type="text" id="cvv" placeholder="123">
-                                </div>
-                                <button type="button" class="btn" id="payWithCard">Pay with Card</button>
-                            </div>
-
-                            <div id="bankForm" class="payment-method-form" style="display: none;">
-                                <div class="form-group">
-                                    <p><strong>Bank Transfer Details:</strong></p>
-                                    <p>Bank: KCB Bank<br>
-                                    Account Name: Hunters Paradise Cottages<br>
-                                    Account Number: 0123456789<br>
-                                    Branch: Bungoma</p>
-                                    <p>Please use your name as reference</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="transferProof">Upload Proof of Transfer</label>
-                                    <input type="file" id="transferProof">
-                                </div>
-                                <button type="button" class="btn" id="confirmTransfer">Confirm Payment</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="booking-info">
                     <h3>Booking Information</h3>
@@ -1460,335 +1280,6 @@
                         <div>
                             <h4>Cancellation Policy</h4>
                             <p>Free cancellation up to 48 hours before check-in. Later cancellations may incur charges.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Conference Booking Section -->
-    <section class="conference-booking" id="conference-booking">
-        <div class="container">
-            <div class="section-title">
-                <h2>Book Eswara Conference</h2>
-            </div>
-            <div class="booking-container">
-                <div class="booking-form">
-                    <h3>Conference Booking Form</h3>
-                    <form id="conferenceForm">
-                        <div class="form-group">
-                            <label for="conferenceDate">Conference Date</label>
-                            <input type="date" id="conferenceDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="conferenceType">Conference Package</label>
-                            <select id="conferenceType" required>
-                                <option value="">Select Package</option>
-                                <option value="full-day">Full Day - Kes. 3,500 per person</option>
-                                <option value="half-day">Half Day - Kes. 3,100 per person</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="attendees">Number of Attendees</label>
-                            <input type="number" id="attendees" min="1" max="80" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="conferenceName">Contact Person Name</label>
-                            <input type="text" id="conferenceName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="conferenceEmail">Email Address</label>
-                            <input type="email" id="conferenceEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="conferencePhone">Phone Number</label>
-                            <input type="tel" id="conferencePhone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Company/Organization</label>
-                            <input type="text" id="company">
-                        </div>
-                        <div class="form-group">
-                            <label for="conferenceRequests">Special Requirements</label>
-                            <textarea id="conferenceRequests"></textarea>
-                        </div>
-                        <button type="submit" class="btn">Proceed to Payment</button>
-                    </form>
-
-                    <div id="conferencePaymentSection" class="payment-section">
-                        <h3>Conference Payment Details</h3>
-                        <div class="payment-options">
-                            <div class="payment-option" data-method="mpesa">
-                                <i class="fas fa-mobile-alt"></i>
-                                <h4>M-Pesa</h4>
-                                <p>Pay via M-Pesa</p>
-                            </div>
-                            <div class="payment-option" data-method="card">
-                                <i class="fas fa-credit-card"></i>
-                                <h4>Credit Card</h4>
-                                <p>Pay with card</p>
-                            </div>
-                            <div class="payment-option" data-method="bank">
-                                <i class="fas fa-university"></i>
-                                <h4>Bank Transfer</h4>
-                                <p>Direct bank transfer</p>
-                            </div>
-                        </div>
-
-                        <div class="payment-form">
-                            <div id="conferenceMpesaForm" class="payment-method-form">
-                                <div class="form-group">
-                                    <label for="conferenceMpesaNumber">M-Pesa Phone Number</label>
-                                    <input type="tel" id="conferenceMpesaNumber" placeholder="e.g. 07XX XXX XXX">
-                                </div>
-                                <button type="button" class="btn" id="conferencePayWithMpesa">Pay via M-Pesa</button>
-                            </div>
-
-                            <div id="conferenceCardForm" class="payment-method-form" style="display: none;">
-                                <div class="form-group">
-                                    <label for="conferenceCardNumber">Card Number</label>
-                                    <input type="text" id="conferenceCardNumber" placeholder="1234 5678 9012 3456">
-                                </div>
-                                <div class="form-group">
-                                    <label for="conferenceCardName">Name on Card</label>
-                                    <input type="text" id="conferenceCardName">
-                                </div>
-                                <div class="form-group">
-                                    <label for="conferenceExpiry">Expiry Date</label>
-                                    <input type="text" id="conferenceExpiry" placeholder="MM/YY">
-                                </div>
-                                <div class="form-group">
-                                    <label for="conferenceCvv">CVV</label>
-                                    <input type="text" id="conferenceCvv" placeholder="123">
-                                </div>
-                                <button type="button" class="btn" id="conferencePayWithCard">Pay with Card</button>
-                            </div>
-
-                            <div id="conferenceBankForm" class="payment-method-form" style="display: none;">
-                                <div class="form-group">
-                                    <p><strong>Bank Transfer Details:</strong></p>
-                                    <p>Bank: KCB Bank<br>
-                                    Account Name: Hunters Paradise Cottages<br>
-                                    Account Number: 0123456789<br>
-                                    Branch: Bungoma</p>
-                                    <p>Please use your company name as reference</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="conferenceTransferProof">Upload Proof of Transfer</label>
-                                    <input type="file" id="conferenceTransferProof">
-                                </div>
-                                <button type="button" class="btn" id="conferenceConfirmTransfer">Confirm Payment</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="booking-info">
-                    <h3>Conference Booking Information</h3>
-                    <div class="info-item">
-                        <i class="fas fa-info-circle"></i>
-                        <div>
-                            <h4>Capacity & Setup</h4>
-                            <p>Maximum capacity: 80 people<br>
-                            Standard setup: Classroom style<br>
-                            Custom setups available upon request</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-concierge-bell"></i>
-                        <div>
-                            <h4>What's Included</h4>
-                            <p>AM/PM tea and snacks<br>
-                            2 bottles of water per person<br>
-                            Writing materials<br>
-                            Buffet lunch<br>
-                            Soft drink<br>
-                            Flip chart<br>
-                            Facilitator<br>
-                            Wi-Fi access</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-credit-card"></i>
-                        <div>
-                            <h4>Payment Policy</h4>
-                            <p>50% deposit required to confirm booking<br>
-                            Full payment due 7 days before event<br>
-                            We accept M-Pesa, credit cards, and bank transfers</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-times-circle"></i>
-                        <div>
-                            <h4>Cancellation Policy</h4>
-                            <p>Free cancellation up to 14 days before event<br>
-                            50% refund for cancellations 7-14 days before<br>
-                            No refund for cancellations less than 7 days before</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Excursions Booking Section -->
-    <section class="excursions-booking" id="excursions-booking">
-        <div class="container">
-            <div class="section-title">
-                <h2>Book An Excursion</h2>
-            </div>
-            <div class="booking-container">
-                <div class="booking-form">
-                    <h3>Excursion Booking Form</h3>
-                    <form id="excursionForm">
-                        <div class="form-group">
-                            <label for="excursionDate">Preferred Date</label>
-                            <input type="date" id="excursionDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="excursionType">Excursion Type</label>
-                            <select id="excursionType" required>
-                                <option value="">Select Excursion</option>
-                                <option value="mt-elgon">Mt. Elgon Tour - Kes. 35,000 (max 7 pax)</option>
-                                <option value="nature-culture">Nature & Culture Tour - Kes. 12,000 (max 7 pax)</option>
-                                <option value="kakapel">Kakapel National Museum - Kes. 15,000 (max 7 pax)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="participants">Number of Participants</label>
-                            <input type="number" id="participants" min="1" max="7" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="excursionName">Contact Person Name</label>
-                            <input type="text" id="excursionName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="excursionEmail">Email Address</label>
-                            <input type="email" id="excursionEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="excursionPhone">Phone Number</label>
-                            <input type="tel" id="excursionPhone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="excursionRequests">Special Requirements</label>
-                            <textarea id="excursionRequests"></textarea>
-                        </div>
-                        <button type="submit" class="btn">Proceed to Payment</button>
-                    </form>
-
-                    <div id="excursionPaymentSection" class="payment-section">
-                        <h3>Excursion Payment Details</h3>
-                        <div class="payment-options">
-                            <div class="payment-option" data-method="mpesa">
-                                <i class="fas fa-mobile-alt"></i>
-                                <h4>M-Pesa</h4>
-                                <p>Pay via M-Pesa</p>
-                            </div>
-                            <div class="payment-option" data-method="card">
-                                <i class="fas fa-credit-card"></i>
-                                <h4>Credit Card</h4>
-                                <p>Pay with card</p>
-                            </div>
-                            <div class="payment-option" data-method="bank">
-                                <i class="fas fa-university"></i>
-                                <h4>Bank Transfer</h4>
-                                <p>Direct bank transfer</p>
-                            </div>
-                        </div>
-
-                        <div class="payment-form">
-                            <div id="excursionMpesaForm" class="payment-method-form">
-                                <div class="form-group">
-                                    <label for="excursionMpesaNumber">M-Pesa Phone Number</label>
-                                    <input type="tel" id="excursionMpesaNumber" placeholder="e.g. 07XX XXX XXX">
-                                </div>
-                                <button type="button" class="btn" id="excursionPayWithMpesa">Pay via M-Pesa</button>
-                            </div>
-
-                            <div id="excursionCardForm" class="payment-method-form" style="display: none;">
-                                <div class="form-group">
-                                    <label for="excursionCardNumber">Card Number</label>
-                                    <input type="text" id="excursionCardNumber" placeholder="1234 5678 9012 3456">
-                                </div>
-                                <div class="form-group">
-                                    <label for="excursionCardName">Name on Card</label>
-                                    <input type="text" id="excursionCardName">
-                                </div>
-                                <div class="form-group">
-                                    <label for="excursionExpiry">Expiry Date</label>
-                                    <input type="text" id="excursionExpiry" placeholder="MM/YY">
-                                </div>
-                                <div class="form-group">
-                                    <label for="excursionCvv">CVV</label>
-                                    <input type="text" id="excursionCvv" placeholder="123">
-                                </div>
-                                <button type="button" class="btn" id="excursionPayWithCard">Pay with Card</button>
-                            </div>
-
-                            <div id="excursionBankForm" class="payment-method-form" style="display: none;">
-                                <div class="form-group">
-                                    <p><strong>Bank Transfer Details:</strong></p>
-                                    <p>Bank: KCB Bank<br>
-                                    Account Name: Hunters Paradise Cottages<br>
-                                    Account Number: 0123456789<br>
-                                    Branch: Bungoma</p>
-                                    <p>Please use your name as reference</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="excursionTransferProof">Upload Proof of Transfer</label>
-                                    <input type="file" id="excursionTransferProof">
-                                </div>
-                                <button type="button" class="btn" id="excursionConfirmTransfer">Confirm Payment</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="booking-info">
-                    <h3>Excursion Information</h3>
-                    <div class="info-item">
-                        <i class="fas fa-info-circle"></i>
-                        <div>
-                            <h4>Tour Details</h4>
-                            <p><strong>Mt. Elgon Tour:</strong> Full day tour with picnic lunch<br>
-                            <strong>Nature & Culture Tour:</strong> 6-hour tour visiting multiple sites<br>
-                            <strong>Kakapel Museum:</strong> 4-hour historical and cultural tour</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-user-friends"></i>
-                        <div>
-                            <h4>Group Size</h4>
-                            <p>All excursions accommodate up to 7 people<br>
-                            Larger groups can be accommodated with multiple vehicles</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-credit-card"></i>
-                        <div>
-                            <h4>Payment Policy</h4>
-                            <p>Full payment required to confirm booking<br>
-                            We accept M-Pesa, credit cards, and bank transfers</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-times-circle"></i>
-                        <div>
-                            <h4>Cancellation Policy</h4>
-                            <p>Free cancellation up to 48 hours before tour<br>
-                            50% refund for cancellations 24-48 hours before<br>
-                            No refund for cancellations less than 24 hours before</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-hiking"></i>
-                        <div>
-                            <h4>What to Bring</h4>
-                            <p>Comfortable walking shoes<br>
-                            Sun protection (hat, sunscreen)<br>
-                            Camera<br>
-                            Drinking water<br>
-                            Light jacket (for mountain tours)</p>
                         </div>
                     </div>
                 </div>
@@ -1865,9 +1356,7 @@
                         <li><a href="#facilities">Facilities</a></li>
                         <li><a href="#conference">Conference</a></li>
                         <li><a href="#excursions">Excursions</a></li>
-                        <li><a href="#booking">Book Stay</a></li>
-                        <li><a href="#conference-booking">Book Conference</a></li>
-                        <li><a href="#excursions-booking">Book Excursion</a></li>
+                        <li><a href="#booking">Book Now</a></li>
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -1908,11 +1397,16 @@
             }
         });
 
+        // Booking form validation and submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your booking request! We will contact you shortly to confirm your reservation and arrange payment.');
+            this.reset();
+        });
+
         // Set minimum date for check-in to today
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('checkIn').setAttribute('min', today);
-        document.getElementById('conferenceDate').setAttribute('min', today);
-        document.getElementById('excursionDate').setAttribute('min', today);
         
         // Update check-out min date when check-in date changes
         document.getElementById('checkIn').addEventListener('change', function() {
@@ -1951,102 +1445,6 @@
                 currentIndex = (currentIndex < imageCount - 1) ? currentIndex + 1 : 0;
                 updateCarousel();
             }, 5000);
-        });
-
-        // Booking form validation and submission
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('paymentSection').style.display = 'block';
-            window.scrollBy(0, 200);
-        });
-
-        document.getElementById('conferenceForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('conferencePaymentSection').style.display = 'block';
-            window.scrollBy(0, 200);
-        });
-
-        document.getElementById('excursionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('excursionPaymentSection').style.display = 'block';
-            window.scrollBy(0, 200);
-        });
-
-        // Payment option selection
-        document.querySelectorAll('.payment-option').forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selected class from all options
-                this.parentElement.querySelectorAll('.payment-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                
-                // Add selected class to clicked option
-                this.classList.add('selected');
-                
-                // Show the corresponding form
-                const method = this.getAttribute('data-method');
-                
-                // Hide all forms first
-                this.closest('.payment-section').querySelectorAll('.payment-method-form').forEach(form => {
-                    form.style.display = 'none';
-                });
-                
-                // Show the selected form
-                if (this.closest('#paymentSection')) {
-                    document.getElementById(`${method}Form`).style.display = 'block';
-                } else if (this.closest('#conferencePaymentSection')) {
-                    document.getElementById(`conference${method.charAt(0).toUpperCase() + method.slice(1)}Form`).style.display = 'block';
-                } else if (this.closest('#excursionPaymentSection')) {
-                    document.getElementById(`excursion${method.charAt(0).toUpperCase() + method.slice(1)}Form`).style.display = 'block';
-                }
-            });
-        });
-
-        // Payment completion handlers
-        document.getElementById('payWithMpesa').addEventListener('click', function() {
-            alert('M-Pesa payment initiated! You will receive a prompt on your phone to complete the payment.');
-        });
-
-        document.getElementById('payWithCard').addEventListener('click', function() {
-            alert('Card payment processed successfully! Thank you for your booking.');
-        });
-
-        document.getElementById('confirmTransfer').addEventListener('click', function() {
-            alert('Bank transfer confirmed! Your booking will be confirmed once we verify the payment.');
-        });
-
-        document.getElementById('conferencePayWithMpesa').addEventListener('click', function() {
-            alert('M-Pesa payment initiated for conference booking! You will receive a prompt on your phone to complete the payment.');
-        });
-
-        document.getElementById('conferencePayWithCard').addEventListener('click', function() {
-            alert('Card payment processed successfully! Thank you for your conference booking.');
-        });
-
-        document.getElementById('conferenceConfirmTransfer').addEventListener('click', function() {
-            alert('Bank transfer confirmed! Your conference booking will be confirmed once we verify the payment.');
-        });
-
-        document.getElementById('excursionPayWithMpesa').addEventListener('click', function() {
-            alert('M-Pesa payment initiated for excursion! You will receive a prompt on your phone to complete the payment.');
-        });
-
-        document.getElementById('excursionPayWithCard').addEventListener('click', function() {
-            alert('Card payment processed successfully! Thank you for your excursion booking.');
-        });
-
-        document.getElementById('excursionConfirmTransfer').addEventListener('click', function() {
-            alert('Bank transfer confirmed! Your excursion booking will be confirmed once we verify the payment.');
-        });
-
-        // Check URL parameters for excursion type
-        window.addEventListener('load', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const excursionType = urlParams.get('type');
-            
-            if (excursionType && document.getElementById('excursionType')) {
-                document.getElementById('excursionType').value = excursionType;
-            }
         });
     </script>
 </body>
