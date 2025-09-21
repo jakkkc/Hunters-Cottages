@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunters Paradise Cottages - Luxury Cottages</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --secondary: #654321;
+            --light: #f8f5f2;
+            --dark: #1a120b;
+            --accent: #CD853F;
+        }
+
+        * {box-sizing: border-box; margin:0; padding:0; font-family: 'Montserrat', sans-serif}
+        body {background:var(--light); color:var(--dark); line-height:1.6}
+        .container{max-width:1200px; margin:0 auto; padding:0 20px}
+
+        header{background:white; position:fixed; width:100%; z-index:1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+        .header-container{display:flex; justify-content:space-between; align-items:center; padding:18px 0}
+        .logo{height:60px}
+        nav ul{display:flex; list-style:none}
+        nav ul li{margin-left:26px}
+        nav a{text-decoration:none; color:var(--dark); font-weight:500; transition: all 0.3s ease;}
+        nav a:hover{color:var(--primary)}
+        .btn{display:inline-block; background:var(--primary); color:#fff; padding:12px 25px; border-radius:30px; text-decoration:none; font-weight:600; border:none; transition: all 0.3s ease;}
+        .btn:hover{background:var(--secondary); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2);}
+        .btn-outline{background:transparent; border:2px solid var(--primary); color:var(--primary);}
+        .btn-outline:hover{background:var(--primary); color:white;}
+
+        /* Hero */
+        .hero{background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('img/aerial_view.jpg'); background-size:cover; background-position:center; height:85vh; display:flex; align-items:center; color:#fff; padding-top:80px; position:relative;}
+        .hero-content{ text-align:left; max-width:700px;}
+        .hero h1{font-size:3.5rem; margin-bottom:15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);}
+        .hero p{font-size:1.2rem; margin-bottom:25px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);}
+
+        section{padding:90px 0}
+        .section-title{text-align:center; margin-bottom:50px}
+        .section-title h2{font-size:2.5rem; color:var(--secondary); display:inline-block; position:relative; padding-bottom:15px}
+        .section-title h2::after{content:''; width:100px; height:4px; background:var(--primary); position:absolute; left:50%; transform:translateX(-50%); bottom:0}
+        .section-subtitle{text-align:center; color:var(--dark); margin-top:-30px; margin-bottom:40px; font-style:italic;}
+
+        .about-content{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center}
+        .about-image img{width:100%; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.12); transition: transform 0.3s ease;}
+        .about-image img:hover{transform: scale(1.02);}
+
+        /* Accommodation */
+        .accommodation-types{display:grid; grid-template-columns:repeat(auto-fit, minmax(450px, 1fr)); gap:30px}
+        .room-card{background:white; border-radius:10px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.08); transition:transform .3s ease, box-shadow .3s ease; position:relative;}
+        .room-card:hover{transform:translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.15);}
+        .room-top{position:relative}
+        .carousel{height:280px; overflow:hidden; position:relative}
+        .carousel img{width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.5s ease;}
+        .carousel .controls{position:absolute; top:50%; left:10px; right:10px; display:flex; justify-content:space-between; transform:translateY(-50%)}
+        .carousel button{background:rgba(0,0,0,0.5); color:#fff; border:none; padding:10px 14px; border-radius:50%; cursor:pointer; transition: background 0.3s ease;}
+        .carousel button:hover{background:rgba(0,0,0,0.8);}
+        .room-content{padding:25px}
+        .room-content h3{color:var(--secondary); margin-bottom:12px; font-size:1.5rem;}
+        .room-content p{margin-bottom:15px; color:#555;}
+        .room-content ul{margin-top:15px; list-style:disc; padding-left:20px; color:#555;}
+        .room-content ul li{margin-bottom:8px;}
+
+        /* Pricing */
+        .pricing-table{width:100%; border-collapse:collapse; margin-top:30px; box-shadow:0 8px 20px rgba(0,0,0,0.06); overflow:hidden; border-radius:10px;}
+        .pricing-table th, .pricing-table td{padding:15px; text-align:center; border:1px solid #eee}
+        .pricing-table th{background:var(--primary); color:#fff; font-weight:600;}
+        .pricing-table tr:nth-child(even){background-color:#f9f9f9;}
+        .pricing-table tr:hover{background-color:#f1f1f1;}
+
+        /* Facilities */
+        .facilities-container{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+        .facility-card{background:white; border-radius:10px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.06); transition: transform 0.3s ease;}
+        .facility-card:hover{transform: translateY(-5px);}
+        .facility-card img{width:100%; height:200px; object-fit:cover}
+        .facility-content{padding:20px}
+        .facility-content h3{color:var(--secondary); margin-bottom:12px;}
+
+        /* Booking */
+        .booking-container{display:grid; grid-template-columns:1fr 1fr; gap:30px}
+        .booking-form{background:white; padding:30px; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+        .form-group{margin-bottom:18px}
+        label{display:block; margin-bottom:8px; font-weight:600; color:#555;}
+        input, select, textarea{width:100%; padding:12px 15px; border:1px solid #ddd; border-radius:6px; font-size:1rem; transition: border 0.3s ease;}
+        input:focus, select:focus, textarea:focus{outline:none; border-color:var(--primary); box-shadow:0 0 0 2px rgba(139, 69, 19, 0.2);}
+
+        /* Gallery */
+        .gallery-container{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px}
+        .gallery-item{height:250px; overflow:hidden; border-radius:8px; position:relative; cursor:pointer;}
+        .gallery-item img{width:100%; height:100%; object-fit:cover; transition: transform 0.5s ease;}
+        .gallery-item:hover img{transform: scale(1.05);}
+        .gallery-item::after{content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.3); opacity:0; transition: opacity 0.3s ease;}
+        .gallery-item:hover::after{opacity:1;}
+
+        /* Contact & Footer */
+        .contact-container{display:grid; grid-template-columns:repeat(2,1fr); gap:30px}
+        footer{background:var(--secondary); color:#fff; padding:60px 0 20px;}
+        .footer-container{display:grid; grid-template-columns:repeat(3,1fr); gap:30px}
+        .footer-container h3{margin-bottom:20px; position:relative; padding-bottom:10px;}
+        .footer-container h3::after{content:''; position:absolute; bottom:0; left:0; width:40px; height:3px; background:var(--primary);}
+        .footer-container ul{list-style:none;}
+        .footer-container ul li{margin-bottom:12px;}
+        .footer-container a{color:#ddd; text-decoration:none; transition: color 0.3s ease;}
+        .footer-container a:hover{color:var(--primary);}
+
+        /* Excursion styles */
+        .excursion-card{background:white; border-radius:10px; padding:20px; margin-bottom:20px; box-shadow:0 5px 15px rgba(0,0,0,0.08);}
+        .excursion-card h4{color:var(--primary); margin-bottom:10px;}
+        .excursion-card p{margin-bottom:5px;}
+
+        /* Responsive */
+        @media (max-width:992px){
+            .about-content, .accommodation-types, .facilities-container, .booking-container, .contact-container{grid-template-columns:1fr}
+            .facilities-container{grid-template-columns:repeat(2,1fr)}
+            .hero h1{font-size:2.5rem;}
+        }
+        @media (max-width:768px){
+            .header-container{flex-direction:column;}
+            nav ul{margin-top:20px;}
+            nav ul li{margin:0 10px;}
+            .facilities-container{grid-template-columns:1fr}
+            .footer-container{grid-template-columns:1fr; text-align:center;}
+            .footer-container h3::after{left:50%; transform:translateX(-50%);}
+            .hero h1{font-size:2rem;}
+        }
+        @media (max-width:576px){
+            .hero h1{font-size:1.8rem}
+            .carousel{height:200px}
+            nav ul{flex-wrap:wrap; justify-content:center;}
+            nav ul li{margin:5px 8px;}
+            .section-title h2{font-size:2rem;}
+            .accommodation-types{grid-template-columns:1fr;}
+        }
+
+        /* Additional styling for emphasis */
+        .highlight{color:var(--primary); font-weight:600;}
+        .animal-name{font-style:italic; color:var(--accent);}
+        .rate{font-weight:700; color:var(--primary);}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <img src="img/brown_logo.png" alt="Hunters Paradise Cottages" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#accommodation">Accommodation</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#excursions">Excursions</a></li>
+                    <li><a href="#booking">Book</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Hunters Paradise Cottages</h1>
+            <p>Experience the wild beauty of Kenya in luxurious comfort. Our uniquely themed cottages offer an unforgettable retreat into nature with personalized service and authentic African hospitality.</p>
+            <p style="margin-top:25px"><a href="#booking" class="btn">Book Your Cottage</a> <a href="#accommodation" class="btn btn-outline" style="margin-left:15px;">Explore Accommodations</a></p>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Hunters Paradise Cottages</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="img/statue.jpg" alt="Simiyu - Founder">
+                </div>
+                <div class="about-text">
+                    <p>Founded by Simiyu, a hunter who needed a place to share his meals with family and friends, Hunters Paradise Cottages embodies warm hospitality, peaceful grounds, and uniquely themed accommodations. "Simiyu" is a special name in the Bukusu community given to children born during a drought—a reminder of survival and resilience.</p>
+                    <p>Our cottages are ideal for families, small groups, retreats, and conferences. Enjoy our restaurant, the Duma bar, excursions to local attractions, and modern conferencing facilities.</p>
+                    <p><span class="highlight">Children policy:</span> Children below 5 years sharing a room stay complimentary (maximum one child per room). Children 6–12 years in their own room pay 75% of the adult rate.</p>
+                    <a href="#facilities" class="btn" style="margin-top:20px">Explore Our Facilities</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="accommodation" id="accommodation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Accommodation</h2>
+            </div>
+            <p class="section-subtitle">Each cottage is named after Kenya's majestic animals, reflecting their unique characteristics</p>
+
+            <div class="accommodation-types">
+                <!-- Engwe (Leopard) - Superior room -->
+                <div class="room-card">
+                    <div class="room-top">
+                        <div class="carousel" id="carousel-engwe">
+                            <img src="img/engwe1.jpg" alt="Engwe Superior Room">
+                            <div class="controls">
+                                <button onclick="prev('engwe')">❮</button>
+                                <button onclick="next('engwe')">❯</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3>Engwe — <span class="animal-name">Leopard</span> (Superior Room)</h3>
+                        <p>Our superior room with elegant finishes, private bathroom and balcony views. The leopard represents stealth and agility.</p>
+                        <ul>
+                            <li>King or Twin bed options</li>
+                            <li>En-suite bathroom with premium amenities</li>
+                            <li>Private balcony with wilderness views</li>
+                            <li>Free Wi-Fi & satellite TV</li>
+                            <li>Tea/coffee making facilities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kibeu (Rhino) - Executive cottage -->
+                <div class="room-card">
+                    <div class="room-top">
+                        <div class="carousel" id="carousel-kibeu">
+                            <img src="img/kibeu1.jpg" alt="Kibeu Executive Cottage">
+                            <div class="controls">
+                                <button onclick="prev('kibeu')">❮</button>
+                                <button onclick="next('kibeu')">❯</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3>Kibeu — <span class="animal-name">Rhino</span> (Executive Cottage)</h3>
+                        <p>Executive cottage inspired by the rhino's quiet strength. Features generous living area and private outdoor space.</p>
+                        <ul>
+                            <li>Separate living and sleeping areas</li>
+                            <li>Private veranda with seating</li>
+                            <li>Premium tea/coffee station</li>
+                            <li>Enhanced bathroom amenities</li>
+                            <li>Complimentary mineral water</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Emboko (Buffalo) - Deluxe cottages -->
+                <div class="room-card">
+                    <div class="room-top">
+                        <div class="carousel" id="carousel-emboko">
+                            <img src="img/emboko1.jpg" alt="Emboko Deluxe Cottage">
+                            <div class="controls">
+                                <button onclick="prev('emboko')">❮</button>
+                                <button onclick="next('emboko')">❯</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3>Emboko — <span class="animal-name">Buffalo</span> (Deluxe Cottage)</h3>
+                        <p>Comfortable deluxe cottage representing the buffalo's strength and unity. Ideal for couples seeking extra space.</p>
+                        <ul>
+                            <li>Spacious bedroom with sitting area</li>
+                            <li>Private garden space</li>
+                            <li>Complimentary breakfast served in-room</li>
+                            <li>Enhanced storage space</li>
+                            <li>Luxury bathrobes and slippers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Enjofu (Elephant) - Family cottage -->
+                <div class="room-card">
+                    <div class="room-top">
+                        <div class="carousel" id="carousel-enjofu">
+                            <img src="img/enjofu1.jpg" alt="Enjofu Family Cottage">
+                            <div class="controls">
+                                <button onclick="prev('enjofu')">❮</button>
+                                <button onclick="next('enjofu')">❯</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3>Enjofu — <span class="animal-name">Elephant</span> (Family Cottage)</h3>
+                        <p>Family cottage that accommodates up to 4 people, inspired by the elephant's wisdom and protective nature.</p>
+                        <ul>
+                            <li>Two separate bedrooms</li>
+                            <li>Spacious living area</li>
+                            <li>Baby cot available on request at no extra cost</li>
+                            <li>Family-friendly amenities</li>
+                            <li>Child safety features</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Etalangi (Lion) - VIP cottage -->
+                <div class="room-card">
+                    <div class="room-top">
+                        <div class="carousel" id="carousel-etalangi">
+                            <img src="img/etalangi1.jpg" alt="Etalangi VIP Cottage">
+                            <div class="controls">
+                                <button onclick="prev('etalangi')">❮</button>
+                                <button onclick="next('etalangi')">❯</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <h3>Etalangi — <span class="animal-name">Lion</span> (VIP Cottage)</h3>
+                        <p>Our premium VIP cottage offering exclusive amenities and privacy, representing the lion's dominance and leadership.</p>
+                        <ul>
+                            <li>Luxury fittings and finishes</li>
+                            <li>Private lounge and dining area</li>
+                            <li>Dedicated butler service</li>
+                            <li>Premium minibar selection</li>
+                            <li>Exclusive check-in/check-out</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Table -->
+            <div class="pricing" style="margin-top:50px">
+                <div class="section-title">
+                    <h2>Accommodation Rates (KES)</h2>
+                </div>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Board Basis</th>
+                            <th>Single Occupancy</th>
+                            <th>Double Occupancy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3">Engwe (Leopard)</td>
+                            <td>Bed & Breakfast</td>
+                            <td class="rate">13,000</td>
+                            <td class="rate">17,000</td>
+                        </tr>
+                        <tr>
+                            <td>Half-Board</td>
+                            <td class="rate">15,500</td>
+                            <td class="rate">22,000</td>
+                        </tr>
+                        <tr>
+                            <td>Full-Board</td>
+                            <td class="rate">18,000</td>
+                            <td class="rate">27,000</td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3">Kibeu (Rhino)</td>
+                            <td>Bed & Breakfast</td>
+                            <td class="rate">17,000</td>
+                            <td class="rate">21,000</td>
+                        </tr>
+                        <tr>
+                            <td>Half-Board</td>
+                            <td class="rate">19,500</td>
+                            <td class="rate">26,000</td>
+                        </tr>
+                        <tr>
+                            <td>Full-Board</td>
+                            <td class="rate">22,000</td>
+                            <td class="rate">31,000</td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3">Emboko (Buffalo)</td>
+                            <td>Bed & Breakfast</td>
+                            <td class="rate">23,000</td>
+                            <td class="rate">27,000</td>
+                        </tr>
+                        <tr>
+                            <td>Half-Board</td>
+                            <td class="rate">25,500</td>
+                            <td class="rate">32,000</td>
+                        </tr>
+                        <tr>
+                            <td>Full-Board</td>
+                            <td class="rate">28,000</td>
+                            <td class="rate">37,000</td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3">Enjofu (Elephant)</td>
+                            <td>Bed & Breakfast</td>
+                            <td class="rate" colspan="2">35,000 (up to 4 people)</td>
+                        </tr>
+                        <tr>
+                            <td>Half-Board</td>
+                            <td class="rate" colspan="2">45,000 (up to 4 people)</td>
+                        </tr>
+                        <tr>
+                            <td>Full-Board</td>
+                            <td class="rate" colspan="2">55,000 (up to 4 people)</td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3">Etalangi (Lion)</td>
+                            <td>Bed & Breakfast</td>
+                            <td class="rate" colspan="2">50,000</td>
+                        </tr>
+                        <tr>
+                            <td>Half-Board</td>
+                            <td class="rate" colspan="2">55,000</td>
+                        </tr>
+                        <tr>
+                            <td>Full-Board</td>
+                            <td class="rate" colspan="2">60,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="margin-top:20px; padding:15px; background:#f9f9f9; border-radius:8px;">
+                    <strong>Children policy:</strong> Children below 5 years sharing a room stay complimentary (maximum one child per room). Children 6–12 years in their own room pay 75% of adult rate.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="facilities" id="facilities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Facilities & Services</h2>
+            </div>
+            <div class="facilities-container">
+                <div class="facility-card">
+                    <img src="img/restaurant.jpg" alt="Ekwena Restaurant">
+                    <div class="facility-content">
+                        <h3>Ekwena Restaurant</h3>
+                        <p>Named after the crocodile, representing strength and patience. Enjoy local and international dishes served in a warm setting with attentive service.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="img/bar.jpg" alt="Duma Bar">
+                    <div class="facility-content">
+                        <h3>Duma Bar</h3>
+                        <p>Named after the cheetah, representing speed and energy. Our bar offers a vibrant atmosphere for drinks and social evenings with friends and fellow travelers.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="img/conference.jpg" alt="Eswara Conference">
+                    <div class="facility-content">
+                        <h3>Eswara Conference Room</h3>
+                        <p>Named after the antelope, representing agility and awareness. Our conference facility accommodates up to 80 people with modern amenities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:30px; background:white; padding:25px; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.06)">
+                <h3 style="margin-bottom:15px; color:var(--secondary);">Conference Package Details</h3>
+                <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:20px;">
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:10px;">Rates</h4>
+                        <ul style="padding-left:20px;">
+                            <li>Full-Day: <span class="rate">Kes. 3,500</span> per person (max 80 pax)</li>
+                            <li>Half-Day: <span class="rate">Kes. 3,100</span> per person (max 80 pax)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:10px;">Package Includes</h4>
+                        <ul style="padding-left:20px;">
+                            <li>AM & PM tea, snacks and 2 bottles of water</li>
+                            <li>Participants writing materials</li>
+                            <li>Mid-morning & Afternoon tea/coffee with pastries</li>
+                            <li>Buffet lunch with one soft drink</li>
+                            <li>Flip chart board, paper & 2 marker pens</li>
+                            <li>Team-building facilitator & high-speed internet</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="excursions" style="background:#f9f9f9; padding:80px 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Excursions & Activities</h2>
+            </div>
+            <p class="section-subtitle">Explore the beautiful surroundings of Hunters Paradise Cottages with our guided excursions</p>
+            
+            <div class="excursion-card">
+                <h4>Mt. Elgon Expedition</h4>
+                <p><span class="highlight">Rate:</span> <span class="rate">Kes. 35,000</span> (maximum 7 people)</p>
+                <p>Experience the majesty of Mt. Elgon with our expert guides. This full-day excursion includes transportation, park fees, and lunch.</p>
+            </div>
+            
+            <div class="excursion-card">
+                <h4>Cultural & Nature Tour</h4>
+                <p><span class="highlight">Rate:</span> <span class="rate">Kes. 12,000</span> (maximum 7 people)</p>
+                <p>Visit Miti Park, Nabuyole Falls, Sang'alo Rocks, and the Nabongo Mumia Cultural Center. This tour offers a perfect blend of nature and culture.</p>
+            </div>
+            
+            <div class="excursion-card">
+                <h4>Kakapel National Museum</h4>
+                <p><span class="highlight">Rate:</span> <span class="rate">Kes. 15,000</span> (maximum 7 people)</p>
+                <p>Explore the rich history and heritage of the region at Kakapel National Museum. Includes guided tour and transportation.</p>
+            </div>
+            
+            <div style="text-align:center; margin-top:30px;">
+                <a href="#booking" class="btn">Book an Excursion</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book a Cottage / Conference / Excursion</h2>
+            </div>
+            <div class="booking-container">
+                <div class="booking-form">
+                    <h3 style="margin-bottom:20px; color:var(--secondary);">Reservation Request</h3>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="checkIn">Check-in Date</label>
+                            <input type="date" id="checkIn" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkOut">Check-out Date</label>
+                            <input type="date" id="checkOut" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="unit">Choose Accommodation / Service</label>
+                            <select id="unit" required>
+                                <option value="">Select Option</option>
+                                <option value="engwe">Engwe (Leopard) - Superior Room</option>
+                                <option value="kibeu">Kibeu (Rhino) - Executive Cottage</option>
+                                <option value="emboko">Emboko (Buffalo) - Deluxe Cottage</option>
+                                <option value="enjofu">Enjofu (Elephant) - Family Cottage</option>
+                                <option value="etalangi">Etalangi (Lion) - VIP Cottage</option>
+                                <option value="eswara">Eswara Conference Room</option>
+                                <option value="excursion">Excursion</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="occupancy">Occupancy</label>
+                            <select id="occupancy" required>
+                                <option value="single">Single</option>
+                                <option value="double">Double</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="board">Board Basis</label>
+                            <select id="board" required>
+                                <option value="bb">Bed & Breakfast</option>
+                                <option value="hb">Half-Board</option>
+                                <option value="fb">Full-Board</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <input type="number" id="guests" value="1" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Special Requests</label>
+                            <textarea id="notes" rows="4"></textarea>
+                        </div>
+                        <button class="btn" type="submit" style="width:100%; padding:15px;">Request Booking</button>
+                    </form>
+                </div>
+                <div class="booking-info" style="background:white; padding:30px; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.06); height:fit-content;">
+                    <h3 style="color:var(--secondary); margin-bottom:20px;">Booking Information</h3>
+                    
+                    <h4 style="color:var(--primary); margin-top:20px; margin-bottom:10px;">Excursion Rates</h4>
+                    <ul style="padding-left:20px; margin-bottom:20px;">
+                        <li>Mt. Elgon — <span class="rate">Kes. 35,000</span> (max 7 pax)</li>
+                        <li>Miti Park, Nabuyole Falls, Sang'alo Rocks, Nabongo Mumia Cultural Center — <span class="rate">Kes. 12,000</span> (max 7 pax)</li>
+                        <li>Kakapel National Museum — <span class="rate">Kes. 15,000</span> (max 7 pax)</li>
+                    </ul>
+                    
+                    <h4 style="color:var(--primary); margin-top:20px; margin-bottom:10px;">Check-in / Check-out</h4>
+                    <p>Check-in: 2:00 PM | Check-out: 11:00 AM</p>
+                    
+                    <h4 style="color:var(--primary); margin-top:20px; margin-bottom:10px;">Payment Methods</h4>
+                    <p>We accept M-Pesa, credit/debit cards, and bank transfers.</p>
+                    
+                    <h4 style="color:var(--primary); margin-top:20px; margin-bottom:10px;">Cancellation Policy</h4>
+                    <p>Free cancellation up to 48 hours before check-in. Later cancellations may incur a fee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+            </div>
+            <p class="section-subtitle">A glimpse of the Hunters Paradise Cottages experience</p>
+            <div class="gallery-container">
+                <div class="gallery-item"><img src="img/random1.jpg" alt="Cottage exterior"></div>
+                <div class="gallery-item"><img src="img/random2.jpg" alt="Lounge area"></div>
+                <div class="gallery-item"><img src="img/random3.jpg" alt="Dining area"></div>
+                <div class="gallery-item"><img src="img/engwe1.jpg" alt="Engwe Room"></div>
+                <div class="gallery-item"><img src="img/kibeu1.jpg" alt="Kibeu Cottage"></div>
+                <div class="gallery-item"><img src="img/emboko1.jpg" alt="Emboko Cottage"></div>
+                <div class="gallery-item"><img src="img/enjofu1.jpg" alt="Enjofu Cottage"></div>
+                <div class="gallery-item"><img src="img/etalangi1.jpg" alt="Etalangi Cottage"></div>
+                <div class="gallery-item"><img src="img/bar.jpg" alt="Duma Bar"></div>
+                <div class="gallery-item"><img src="img/restaurant.jpg" alt="Ekwena Restaurant"></div>
+                <div class="gallery-item"><img src="img/conference.jpg" alt="Eswara Conference"></div>
+                <div class="gallery-item"><img src="img/aerial_view.jpg" alt="Aerial View"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact & Location</h2>
+            </div>
+            <div class="contact-container">
+                <div>
+                    <h3 style="color:var(--secondary); margin-bottom:20px;">Get In Touch</h3>
+                    <p style="margin-bottom:15px;"><i class="fas fa-map-marker-alt" style="color:var(--primary); margin-right:10px;"></i> Bungoma, Kenya</p>
+                    <p style="margin-bottom:15px;"><i class="fas fa-phone-alt" style="color:var(--primary); margin-right:10px;"></i> +254 710 720 664</p>
+                    <p style="margin-bottom:25px;"><i class="fas fa-envelope" style="color:var(--primary); margin-right:10px;"></i> cottages@huntersparadise.ke</p>
+                    
+                    <h4 style="color:var(--secondary); margin-top:25px; margin-bottom:15px;">Operating Hours</h4>
+                    <p>Reception: 24/7</p>
+                    <p>Restaurant: 7:00 AM - 10:00 PM</p>
+                    <p>Bar: 11:00 AM - Midnight</p>
+                    
+                    <div style="margin-top:30px;">
+                        <a href="#booking" class="btn">Make a Booking</a>
+                    </div>
+                </div>
+                <div style="background:white; padding:30px; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+                    <h3 style="color:var(--secondary); margin-bottom:20px;">Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required style="padding:12px;">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" style="padding:12px;">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number" style="padding:12px;">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" style="padding:12px; height:150px;"></textarea>
+                        </div>
+                        <button class="btn" type="submit" style="width:100%; padding:15px;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div>
+                <h3>About Us</h3>
+                <p>Hunters Paradise Cottages offers comfortable, uniquely themed accommodations with personalized service and scenic grounds, continuing Simiyu's legacy of hospitality.</p>
+                <div style="margin-top:20px;">
+                    <img src="img/white_logo.png" alt="Hunters Paradise Cottages" style="height:50px;">
+                </div>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#accommodation">Accommodation</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#excursions">Excursions</a></li>
+                    <li><a href="#booking">Booking</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Branches</h3>
+                <ul>
+                    <li><a href="https://huntersparadise.ke" target="_blank">Hunters Paradise Tuuti</a></li>
+                    <li><a href="#">Hunters Paradise Cottages</a></li>
+                </ul>
+                
+                <h3 style="margin-top:30px;">Connect With Us</h3>
+                <div style="display:flex; gap:15px; margin-top:15px;">
+                    <a href="#" style="color:#fff; font-size:1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color:#fff; font-size:1.2rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color:#fff; font-size:1.2rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color:#fff; font-size:1.2rem;"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; color:#ddd; padding:20px; margin-top:40px; border-top:1px solid rgba(255,255,255,0.1);">
+            &copy; 2023 Hunters Paradise Cottages. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Carousel implementation using image lists per unit
+        const carousels = {
+            engwe: ['img/engwe1.jpg','img/engwe2.jpg'],
+            kibeu: ['img/kibeu1.jpg','img/kibeu2.jpg'],
+            emboko: ['img/emboko1.jpg','img/emboko2.jpg'],
+            enjofu: ['img/enjofu1.jpg','img/enjofu2.jpg'],
+            etalangi: ['img/etalangi1.jpg','img/etalangi2.jpg']
+        };
+        const indices = {engwe:0, kibeu:0, emboko:0, enjofu:0, etalangi:0};
+
+        function show(unit){
+            const id = 'carousel-'+unit;
+            const el = document.getElementById(id);
+            if(!el) return;
+            const img = el.querySelector('img');
+            img.src = carousels[unit][indices[unit]];
+        }
+        
+        function next(unit){ 
+            indices[unit] = (indices[unit]+1) % carousels[unit].length; 
+            show(unit);
+        }
+        
+        function prev(unit){ 
+            indices[unit] = (indices[unit]-1 + carousels[unit].length) % carousels[unit].length; 
+            show(unit);
+        }
+
+        // Initialize all carousels
+        document.addEventListener('DOMContentLoaded', function() {
+            Object.keys(carousels).forEach(u => show(u));
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if(target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Booking form handling
+            document.getElementById('bookingForm').addEventListener('submit', function(e){
+                e.preventDefault();
+                alert('Thank you! Your booking request has been received. We will contact you shortly to confirm and arrange payment.');
+                this.reset();
+            });
+
+            // Set minimum date for check-in to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkIn').setAttribute('min', today);
+            
+            // Set minimum check-out date based on check-in date
+            document.getElementById('checkIn').addEventListener('change', function() {
+                document.getElementById('checkOut').setAttribute('min', this.value);
+            });
+        });
+    </script>
+</body>
+</html>
