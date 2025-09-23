@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hunters Paradise Cottages - Luxury Escape</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary: #b76542;
-            --secondary: #432a17;
-            --light: #f8f5f2;
-            --dark: #1a120b;
+            --primary: #8B4513; /* Rich saddle brown */
+            --secondary: #D2691E; /* Burnt orange */
+            --accent: #A0522D; /* Sienna brown */
+            --light: #FFF8F0; /* Warm creamy white */
+            --dark: #3E2723; /* Deep brown */
+            --text-light: #F5F5F5;
+            --text-dark: #4A342E;
+            --highlight: #FFA726; /* Amber accent */
         }
 
         * {
@@ -23,34 +27,44 @@
 
         body {
             background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Playfair Display", serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
         }
 
         /* Header Styles */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(139, 69, 19, 0.1);
             position: fixed;
             width: 100%;
             z-index: 1000;
+            transition: all 0.4s ease;
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
         }
 
         .logo {
-            height: 60px;
+            height: 70px;
+            transition: all 0.3s ease;
         }
 
         nav ul {
@@ -59,7 +73,8 @@
         }
 
         nav ul li {
-            margin-left: 30px;
+            margin-left: 35px;
+            position: relative;
         }
 
         nav ul li a {
@@ -67,104 +82,200 @@
             color: var(--dark);
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
         }
 
         nav ul li a:hover {
-            color: var(--primary);
+            color: var(--secondary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 14px 28px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(210, 105, 30, 0.3);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
         }
 
         .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(210, 105, 30, 0.4);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::after {
+            opacity: 1;
         }
 
         .btn-secondary {
             display: inline-block;
-            background-color: var(--secondary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
+            background-color: transparent;
+            color: var(--secondary);
+            padding: 14px 28px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
-            border: none;
+            transition: all 0.4s ease;
+            border: 2px solid var(--secondary);
             cursor: pointer;
+            letter-spacing: 0.5px;
         }
 
         .btn-secondary:hover {
-            background-color: var(--primary);
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(210, 105, 30, 0.3);
+        }
+
+        .btn-small {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-small:hover {
             transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(210, 105, 30, 0.3);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            background: linear-gradient(rgba(62, 39, 35, 0.7), rgba(62, 39, 35, 0.5)),
                 url("img/aerial_view.jpg");
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
             padding-top: 80px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 4.5rem;
+            margin-bottom: 25px;
             font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
         }
 
         .hero-logo {
-            max-width: 300px;
-            margin: 0 auto 30px;
+            max-width: 350px;
+            margin: 0 auto 40px;
             filter: brightness(0) invert(1);
         }
 
         .hero-cta-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         /* About Section */
         .about {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: white;
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238B4513' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
+            position: relative;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
+            font-size: 3rem;
+            color: var(--dark);
             position: relative;
             display: inline-block;
-            padding-bottom: 15px;
+            padding-bottom: 20px;
         }
 
         .section-title h2::after {
@@ -173,63 +284,139 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--primary);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
         }
 
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .about-image {
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.1);
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        .about-image:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.1));
+            z-index: 1;
         }
 
         .about-image img {
             width: 100%;
-            height: auto;
+            height: 500px;
+            object-fit: cover;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
         }
 
         .about-text p {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
         }
 
-        /* Accommodation Section */
+        /* Accommodation Section - Redesigned */
         .accommodation {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: var(--light);
+            position: relative;
+        }
+
+        .accommodation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238B4513' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
         .accommodation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 2;
         }
 
         .room-card {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.08);
+            transition: all 0.5s ease;
+            position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .room-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent), var(--primary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
         }
 
         .room-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(139, 69, 19, 0.15);
+        }
+
+        .room-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.03) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .room-carousel {
             position: relative;
-            height: 250px;
+            height: 280px;
             overflow: hidden;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
         }
 
         .carousel-images {
@@ -248,116 +435,266 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
+            background: rgba(255, 248, 240, 0.9);
+            color: var(--secondary);
             border: none;
-            padding: 10px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
             cursor: pointer;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+        }
+
+        .room-carousel:hover .carousel-btn {
+            opacity: 1;
+        }
+
+        .carousel-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
 
         .carousel-prev {
-            left: 10px;
+            left: 20px;
         }
 
         .carousel-next {
-            right: 10px;
+            right: 20px;
         }
 
         .room-content {
             padding: 30px;
+            position: relative;
+            z-index: 2;
         }
 
         .room-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
+            font-size: 1.9rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
         }
 
         .room-content .animal-name {
             font-style: italic;
-            color: var(--primary);
+            color: var(--secondary);
             margin-bottom: 15px;
             display: block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            font-family: "Playfair Display", serif;
         }
 
         .room-content p {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .room-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .room-feature {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: #666;
+            padding: 8px 12px;
+            background-color: rgba(139, 69, 19, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .room-feature:hover {
+            background-color: rgba(139, 69, 19, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .room-feature i {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .room-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        .room-price {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .room-price span {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #777;
+            display: block;
+            margin-top: 5px;
         }
 
         /* Pricing Table */
         .pricing {
-            margin-top: 50px;
+            margin-top: 70px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pricing-table-container {
+            overflow-x: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.08);
         }
 
         .pricing-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
+            margin-top: 40px;
+            background-color: white;
+            min-width: 850px;
         }
 
         .pricing-table th,
         .pricing-table td {
-            padding: 15px;
+            padding: 20px 15px;
             text-align: center;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(139, 69, 19, 0.1);
         }
 
         .pricing-table th {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
             color: white;
             font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
         }
 
         .pricing-table tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: rgba(139, 69, 19, 0.02);
         }
 
         .pricing-table tr:hover {
-            background-color: #f1f1f1;
+            background-color: rgba(139, 69, 19, 0.05);
+        }
+
+        .pricing-table .room-type {
+            font-weight: 600;
+            color: var(--dark);
+            text-align: left;
+            padding-left: 25px;
+            font-family: "Playfair Display", serif;
+        }
+
+        .pricing-table .board-type {
+            font-weight: 500;
+            text-align: left;
+            padding-left: 25px;
         }
 
         .child-policy {
-            margin-top: 30px;
+            margin-top: 50px;
             background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.08);
+            border-left: 5px solid var(--secondary);
         }
 
         .child-policy h3 {
-            color: var(--secondary);
-            margin-bottom: 15px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
         }
 
-        /* Facilities Section */
+        .child-policy h3 i {
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.3rem;
+        }
+
+        .child-policy p {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .child-policy p::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Facilities Section with Learn More buttons */
         .facilities {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: white;
         }
 
         .facilities-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
 
         .facility-card {
             background-color: var(--light);
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.08);
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
             height: 100%;
+            position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .facility-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent), var(--primary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
         }
 
         .facility-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(139, 69, 19, 0.15);
         }
 
         .facility-image {
@@ -378,7 +715,7 @@
         }
 
         .facility-content {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             flex-grow: 1;
             display: flex;
@@ -387,33 +724,34 @@
         }
 
         .facility-content h3 {
-            color: var(--secondary);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
 
         .facility-content p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             flex-grow: 1;
+            color: #666;
         }
 
         /* Conference Section */
         .conference {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: var(--light);
         }
 
         .conference-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
         }
 
         .conference-image {
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.1);
         }
 
         .conference-image img {
@@ -424,14 +762,20 @@
 
         .package-details {
             background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.08);
         }
 
         .package-details h3 {
-            color: var(--secondary);
+            color: var(--dark);
             margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .package-details h4 {
+            color: var(--secondary);
+            margin: 20px 0 10px;
         }
 
         .package-details ul {
@@ -441,32 +785,66 @@
 
         .package-details ul li {
             margin-bottom: 10px;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .package-details ul li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
 
         /* Excursions Section */
         .excursions {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: white;
         }
 
         .excursions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
 
         .excursion-card {
             background-color: var(--light);
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.08);
             display: flex;
             flex-direction: column;
             height: 100%;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .excursion-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent), var(--primary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+        }
+
+        .excursion-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(139, 69, 19, 0.15);
         }
 
         .excursion-image {
-            height: 200px;
+            height: 220px;
         }
 
         .excursion-image img {
@@ -476,46 +854,56 @@
         }
 
         .excursion-content {
-            padding: 20px;
+            padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .excursion-content h3 {
-            color: var(--secondary);
+            color: var(--dark);
             margin-bottom: 10px;
+            font-size: 1.4rem;
         }
 
         .excursion-price {
-            color: var(--primary);
+            color: var(--secondary);
             font-weight: 600;
             margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
-        .excursion-content .btn {
-            margin-top: auto;
-            align-self: flex-start;
+        .excursion-content p {
+            margin-bottom: 20px;
+            flex-grow: 1;
+            color: #666;
         }
 
         /* Gallery Section */
         .gallery {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: var(--light);
         }
 
         .gallery-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
             margin-top: 40px;
         }
 
         .gallery-item {
             height: 250px;
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 15px;
             position: relative;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.15);
         }
 
         .gallery-item img {
@@ -531,62 +919,92 @@
 
         /* Booking Section */
         .booking {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: white;
         }
 
         .booking-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
         }
 
         .booking-form {
             background-color: var(--light);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.08);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
+            color: var(--dark);
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 14px 15px;
+            border: 1px solid rgba(139, 69, 19, 0.2);
+            border-radius: 8px;
             font-size: 1rem;
+            transition: all 0.3s;
+            background-color: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.1);
         }
 
         .booking-info {
-            padding: 30px;
+            padding: 40px;
         }
 
         .booking-info h3 {
-            margin-bottom: 20px;
-            color: var(--secondary);
+            margin-bottom: 25px;
+            color: var(--dark);
+            font-size: 1.8rem;
         }
 
         .info-item {
             display: flex;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: rgba(139, 69, 19, 0.03);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background-color: rgba(139, 69, 19, 0.07);
+            transform: translateX(5px);
         }
 
         .info-item i {
-            color: var(--primary);
+            color: var(--secondary);
             margin-right: 15px;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-top: 3px;
+        }
+
+        .info-item h4 {
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .info-item p {
+            color: #666;
         }
 
         /* Payment Section */
@@ -595,7 +1013,7 @@
             padding: 30px;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
             margin-top: 30px;
         }
 
@@ -616,18 +1034,18 @@
         }
 
         .payment-option:hover {
-            border-color: var(--primary);
+            border-color: var(--secondary);
         }
 
         .payment-option.selected {
-            border-color: var(--primary);
-            background-color: rgba(183, 101, 66, 0.1);
+            border-color: var(--secondary);
+            background-color: rgba(210, 105, 30, 0.1);
         }
 
         .payment-option i {
             font-size: 2rem;
             margin-bottom: 10px;
-            color: var(--secondary);
+            color: var(--dark);
         }
 
         .payment-form {
@@ -636,32 +1054,32 @@
 
         /* Conference Booking Section */
         .conference-booking {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: var(--light);
         }
 
         /* Excursions Booking Section */
         .excursions-booking {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: white;
         }
 
         /* Contact Section */
         .contact {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: var(--light);
         }
 
         .contact-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
+            gap: 60px;
         }
 
         .contact-info h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--secondary);
+            color: var(--dark);
         }
 
         .contact-details {
@@ -671,24 +1089,37 @@
         .contact-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.05);
         }
 
         .contact-item i {
-            color: var(--primary);
+            color: var(--secondary);
             margin-right: 15px;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-top: 3px;
         }
 
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 15px;
             margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border: 1px solid rgba(139, 69, 19, 0.2);
+            border-radius: 8px;
             font-size: 1rem;
+            transition: all 0.3s;
+            background-color: white;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.1);
         }
 
         .contact-form textarea {
@@ -698,23 +1129,35 @@
 
         /* Footer */
         footer {
-            background-color: var(--secondary);
-            color: white;
-            padding: 50px 0 20px;
+            background: linear-gradient(135deg, var(--dark), #2E1A12);
+            color: var(--text-light);
+            padding: 70px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
         }
 
         .footer-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 50px;
+            margin-bottom: 50px;
         }
 
         .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            font-family: "Playfair Display", serif;
         }
 
         .footer-col h3::after {
@@ -723,8 +1166,9 @@
             bottom: 0;
             left: 0;
             width: 50px;
-            height: 2px;
-            background-color: var(--primary);
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
         }
 
         .footer-col ul {
@@ -732,50 +1176,71 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-col ul li a {
             color: #ccc;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            font-size: 0.95rem;
         }
 
         .footer-col ul li a:hover {
             color: white;
+            padding-left: 5px;
         }
 
         .social-links {
             display: flex;
             gap: 15px;
+            margin-top: 20px;
         }
 
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: all 0.3s;
+            font-size: 1.1rem;
         }
 
         .social-links a:hover {
-            background-color: var(--primary);
+            background-color: var(--secondary);
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
+        }
+
+        .footer-logo {
+            max-width: 220px;
+            margin-bottom: 25px;
+            filter: brightness(0) invert(1);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #aaa;
         }
 
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 25px;
+            }
+            
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+        }
+
         @media (max-width: 992px) {
             .about-content,
             .accommodation-grid,
@@ -783,17 +1248,26 @@
             .conference-content,
             .excursions-grid,
             .booking-container,
-            .contact-container {
+            .contact-container,
+            .footer-container {
                 grid-template-columns: 1fr;
             }
 
             .footer-container {
-                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
             }
 
             .hero-cta-container {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .room-features {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -810,34 +1284,68 @@
             }
 
             nav ul li {
-                margin: 5px 10px;
+                margin: 8px 15px;
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
             }
 
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image img {
+                height: 400px;
+            }
+
+            .accommodation-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 576px) {
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .pricing-table {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
             }
             
             .pricing-table th, 
             .pricing-table td {
-                padding: 8px;
+                padding: 12px 8px;
+            }
+
+            .room-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .room-price {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            .about, .accommodation, .facilities, .conference, .excursions, .gallery, .booking, .contact {
+                padding: 80px 0;
+            }
+
+            .booking-form, .package-details, .contact-form {
+                padding: 25px;
             }
         }
     </style>
@@ -855,9 +1363,6 @@
                     <li><a href="#facilities">Facilities</a></li>
                     <li><a href="#conference">Conference</a></li>
                     <li><a href="#excursions">Excursions</a></li>
-                    <!-- <li><a href="#booking">Book Stay</a></li>
-                    <li><a href="#conference-booking">Book Conference</a></li>
-                    <li><a href="#excursions-booking">Book Excursion</a></li> -->
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -869,8 +1374,8 @@
     <section class="hero" id="home">
         <div class="container hero-content">
             <img src="img/white_logo.png" alt="Hunters Paradise Cottages" class="hero-logo">
-            <h1>Hunters Paradise Cottages</h1>
-            <p>A luxurious escape inspired by nature, tradition, and harmony.</p>
+            <h1>-Find What You Seek-</h1>
+            <p>A luxurious escape inspired by nature, tradition, and harmony. Experience unparalleled comfort in our animal-themed cottages nestled in Kenya's beautiful landscape.</p>
             <div class="hero-cta-container">
                 <a href="#booking" class="btn">Book Your Stay</a>
                 <a href="#conference-booking" class="btn-secondary">Book Conference</a>
@@ -899,7 +1404,7 @@
         </div>
     </section>
 
-    <!-- Accommodation Section -->
+    <!-- Accommodation Section - Redesigned -->
     <section class="accommodation" id="accommodation">
         <div class="container">
             <div class="section-title">
@@ -914,19 +1419,22 @@
                             <img src="img/engwe2.jpg" alt="Engwe Cottage">
                             <img src="img/engwe3.jpg" alt="Engwe Cottage">
                         </div>
-                        <button class="carousel-btn carousel-prev">&#10094;</button>
-                        <button class="carousel-btn carousel-next">&#10095;</button>
+                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="room-content">
                         <h3>Engwe <span class="animal-name">(Leopard)</span></h3>
                         <p>Superior Room inspired by the leopard's stealth and agility. This two-story cottage offers elevation, privacy, and a connection with the surrounding trees.</p>
-                        <ul>
-                            <li>Two-story design</li>
-                            <li>Private balcony with tree views</li>
-                            <li>Luxury amenities</li>
-                            <li>Green-themed decor</li>
-                        </ul>
-                        <a href="#booking" class="btn">Book Now</a>
+                        <div class="room-features">
+                            <div class="room-feature"><i class="fas fa-home"></i> Two-story design</div>
+                            <div class="room-feature"><i class="fas fa-tree"></i> Swimming Pool views</div>
+                            <div class="room-feature"><i class="fas fa-star"></i> Luxury amenities</div>
+                            <div class="room-feature"><i class="fas fa-palette"></i> Green-themed decor</div>
+                        </div>
+                        <div class="room-footer">
+                            <div class="room-price">From Kes. 13,000 <span>Bed & Breakfast</span></div>
+                            <a href="#booking" class="btn">Book Now</a>
+                        </div>
                     </div>
                 </div>
 
@@ -938,19 +1446,22 @@
                             <img src="img/kibeu2.jpg" alt="Kibeu Cottage">
                             <img src="img/kibeu3.jpg" alt="Kibeu Cottage">
                         </div>
-                        <button class="carousel-btn carousel-prev">&#10094;</button>
-                        <button class="carousel-btn carousel-next">&#10095;</button>
+                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="room-content">
                         <h3>Kibeu <span class="animal-name">(Rhino)</span></h3>
                         <p>Executive Cottage inspired by the rhino's quiet strength. Its khaki color blends with the landscape, offering peace and relaxation in nature's embrace.</p>
-                        <ul>
-                            <li>Spacious layout</li>
-                            <li>Premium bedding</li>
-                            <li>Private garden area</li>
-                            <li>Nature-inspired decor</li>
-                        </ul>
-                        <a href="#booking" class="btn">Book Now</a>
+                        <div class="room-features">
+                            <div class="room-feature"><i class="fas fa-expand"></i> Spacious layout</div>
+                            <div class="room-feature"><i class="fas fa-bed"></i> Premium bedding</div>
+                            <div class="room-feature"><i class="fas fa-seedling"></i> Private garden area</div>
+                            <div class="room-feature"><i class="fas fa-leaf"></i> Nature-inspired decor</div>
+                        </div>
+                        <div class="room-footer">
+                            <div class="room-price">From Kes. 17,000 <span>Bed & Breakfast</span></div>
+                            <a href="#booking" class="btn">Book Now</a>
+                        </div>
                     </div>
                 </div>
 
@@ -962,19 +1473,22 @@
                             <img src="img/emboko2.jpg" alt="Emboko Cottage">
                             <img src="img/emboko3.jpg" alt="Emboko Cottage">
                         </div>
-                        <button class="carousel-btn carousel-prev">&#10094;</button>
-                        <button class="carousel-btn carousel-next">&#10095;</button>
+                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="room-content">
                         <h3>Emboko <span class="animal-name">(Buffalo)</span></h3>
                         <p>Deluxe Cottage inspired by the buffalo's loyalty and unity. Featuring an extra indoor lounge, it's perfect for friends and families traveling together.</p>
-                        <ul>
-                            <li>Extra indoor lounge</li>
-                            <li>Grey-themed decor</li>
-                            <li>Family-friendly amenities</li>
-                            <li>Spacious living area</li>
-                        </ul>
-                        <a href="#booking" class="btn">Book Now</a>
+                        <div class="room-features">
+                            <div class="room-feature"><i class="fas fa-couch"></i> Extra indoor lounge</div>
+                            <div class="room-feature"><i class="fas fa-paint-brush"></i> Grey-themed decor</div>
+                            <div class="room-feature"><i class="fas fa-users"></i> Family-friendly amenities</div>
+                            <div class="room-feature"><i class="fas fa-arrows-alt-h"></i> Spacious living area</div>
+                        </div>
+                        <div class="room-footer">
+                            <div class="room-price">From Kes. 23,000 <span>Bed & Breakfast</span></div>
+                            <a href="#booking" class="btn">Book Now</a>
+                        </div>
                     </div>
                 </div>
 
@@ -986,19 +1500,22 @@
                             <img src="img/enjofu2.jpg" alt="Enjofu Cottage">
                             <img src="img/enjofu3.jpg" alt="Enjofu Cottage">
                         </div>
-                        <button class="carousel-btn carousel-prev">&#10094;</button>
-                        <button class="carousel-btn carousel-next">&#10095;</button>
+                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="room-content">
                         <h3>Enjofu <span class="animal-name">(Elephant)</span></h3>
                         <p>Family Cottage inspired by the elephant's wisdom and protective nature. With warm red and orange tones, it's perfect for families to bond and create memories.</p>
-                        <ul>
-                            <li>Sleeps 4 people</li>
-                            <li>Baby cot available</li>
-                            <li>Family-sized bathroom</li>
-                            <li>Play area for children</li>
-                        </ul>
-                        <a href="#booking" class="btn">Book Now</a>
+                        <div class="room-features">
+                            <div class="room-feature"><i class="fas fa-user-friends"></i> Sleeps 4 people</div>
+                            <div class="room-feature"><i class="fas fa-baby"></i> Baby cot available</div>
+                            <div class="room-feature"><i class="fas fa-bath"></i> Family-sized bathroom</div>
+                            <div class="room-feature"><i class="fas fa-child"></i> Play area for children</div>
+                        </div>
+                        <div class="room-footer">
+                            <div class="room-price">From Kes. 35,000 <span>Bed & Breakfast</span></div>
+                            <a href="#booking" class="btn">Book Now</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1010,19 +1527,22 @@
                             <img src="img/etalangi2.jpg" alt="Etalangi Cottage">
                             <img src="img/etalangi3.jpg" alt="Etalangi Cottage">
                         </div>
-                        <button class="carousel-btn carousel-prev">&#10094;</button>
-                        <button class="carousel-btn carousel-next">&#10095;</button>
+                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="room-content">
                         <h3>Etalangi <span class="animal-name">(Lion)</span></h3>
                         <p>VIP Cottage inspired by the lion, king of the jungle. Painted in royal blue, it offers unmatched luxury, privacy, and service with a private butler.</p>
-                        <ul>
-                            <li>Private butler service</li>
-                            <li>Luxury bathroom</li>
-                            <li>Premium amenities</li>
-                            <li>Exclusive dining options</li>
-                        </ul>
-                        <a href="#booking" class="btn">Book Now</a>
+                        <div class="room-features">
+                            <div class="room-feature"><i class="fas fa-concierge-bell"></i> Private butler service</div>
+                            <div class="room-feature"><i class="fas fa-bath"></i> Luxury bathroom</div>
+                            <div class="room-feature"><i class="fas fa-star"></i> Premium amenities</div>
+                            <div class="room-feature"><i class="fas fa-utensils"></i> Exclusive dining options</div>
+                        </div>
+                        <div class="room-footer">
+                            <div class="room-price">From Kes. 50,000 <span>Bed & Breakfast</span></div>
+                            <a href="#booking" class="btn">Book Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1032,95 +1552,97 @@
                 <div class="section-title">
                     <h2>Accommodation Rates</h2>
                 </div>
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th>Cottage</th>
-                            <th>Board Basis</th>
-                            <th>Single Occupancy</th>
-                            <th>Double Occupancy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="3">Engwe (Superior)</td>
-                            <td>Bed & Breakfast</td>
-                            <td>Kes. 13,000</td>
-                            <td>Kes. 17,000</td>
-                        </tr>
-                        <tr>
-                            <td>Half Board</td>
-                            <td>Kes. 15,500</td>
-                            <td>Kes. 22,000</td>
-                        </tr>
-                        <tr>
-                            <td>Full Board</td>
-                            <td>Kes. 18,000</td>
-                            <td>Kes. 27,000</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">Kibeu (Executive)</td>
-                            <td>Bed & Breakfast</td>
-                            <td>Kes. 17,000</td>
-                            <td>Kes. 21,000</td>
-                        </tr>
-                        <tr>
-                            <td>Half Board</td>
-                            <td>Kes. 19,500</td>
-                            <td>Kes. 26,000</td>
-                        </tr>
-                        <tr>
-                            <td>Full Board</td>
-                            <td>Kes. 22,000</td>
-                            <td>Kes. 31,000</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">Emboko (Deluxe)</td>
-                            <td>Bed & Breakfast</td>
-                            <td>Kes. 23,000</td>
-                            <td>Kes. 27,000</td>
-                        </tr>
-                        <tr>
-                            <td>Half Board</td>
-                            <td>Kes. 25,500</td>
-                            <td>Kes. 32,000</td>
-                        </tr>
-                        <tr>
-                            <td>Full Board</td>
-                            <td>Kes. 28,000</td>
-                            <td>Kes. 37,000</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">Enjofu (Family)</td>
-                            <td>Bed & Breakfast</td>
-                            <td colspan="2">Kes. 35,000</td>
-                        </tr>
-                        <tr>
-                            <td>Half Board</td>
-                            <td colspan="2">Kes. 45,000</td>
-                        </tr>
-                        <tr>
-                            <td>Full Board</td>
-                            <td colspan="2">Kes. 55,000</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">Etalangi (VIP)</td>
-                            <td>Bed & Breakfast</td>
-                            <td colspan="2">Kes. 50,000</td>
-                        </tr>
-                        <tr>
-                            <td>Half Board</td>
-                            <td colspan="2">Kes. 55,000</td>
-                        </tr>
-                        <tr>
-                            <td>Full Board</td>
-                            <td colspan="2">Kes. 60,000</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="pricing-table-container">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Cottage</th>
+                                <th>Board Basis</th>
+                                <th>Single Occupancy</th>
+                                <th>Double Occupancy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="room-type" rowspan="3">Engwe (Superior)</td>
+                                <td class="board-type">Bed & Breakfast</td>
+                                <td>Kes. 13,000</td>
+                                <td>Kes. 17,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Half Board</td>
+                                <td>Kes. 15,500</td>
+                                <td>Kes. 22,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Full Board</td>
+                                <td>Kes. 18,000</td>
+                                <td>Kes. 27,000</td>
+                            </tr>
+                            <tr>
+                                <td class="room-type" rowspan="3">Kibeu (Executive)</td>
+                                <td class="board-type">Bed & Breakfast</td>
+                                <td>Kes. 17,000</td>
+                                <td>Kes. 21,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Half Board</td>
+                                <td>Kes. 19,500</td>
+                                <td>Kes. 26,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Full Board</td>
+                                <td>Kes. 22,000</td>
+                                <td>Kes. 31,000</td>
+                            </tr>
+                            <tr>
+                                <td class="room-type" rowspan="3">Emboko (Deluxe)</td>
+                                <td class="board-type">Bed & Breakfast</td>
+                                <td>Kes. 23,000</td>
+                                <td>Kes. 27,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Half Board</td>
+                                <td>Kes. 25,500</td>
+                                <td>Kes. 32,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Full Board</td>
+                                <td>Kes. 28,000</td>
+                                <td>Kes. 37,000</td>
+                            </tr>
+                            <tr>
+                                <td class="room-type" rowspan="3">Enjofu (Family)</td>
+                                <td class="board-type">Bed & Breakfast</td>
+                                <td colspan="2">Kes. 35,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Half Board</td>
+                                <td colspan="2">Kes. 45,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Full Board</td>
+                                <td colspan="2">Kes. 55,000</td>
+                            </tr>
+                            <tr>
+                                <td class="room-type" rowspan="3">Etalangi (VIP)</td>
+                                <td class="board-type">Bed & Breakfast</td>
+                                <td colspan="2">Kes. 50,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Half Board</td>
+                                <td colspan="2">Kes. 55,000</td>
+                            </tr>
+                            <tr>
+                                <td class="board-type">Full Board</td>
+                                <td colspan="2">Kes. 60,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="child-policy">
-                    <h3>Child Policy</h3>
+                    <h3><i class="fas fa-child"></i> Child Policy</h3>
                     <p>Children below 5 years: Complimentary (maximum 1 per room)</p>
                     <p>Children 6–12 years in own room: 75% of adult rate</p>
                 </div>
@@ -1128,7 +1650,7 @@
         </div>
     </section>
 
-    <!-- Facilities Section -->
+    <!-- Facilities Section with Learn More buttons -->
     <section class="facilities" id="facilities">
         <div class="container">
             <div class="section-title">
@@ -1142,6 +1664,7 @@
                     <div class="facility-content">
                         <h3>Duma Bar</h3>
                         <p>Inspired by the cheetah, our bar is full of energy and excitement. Enjoy drinks, music, and lively conversations in a vibrant atmosphere.</p>
+                        <a href="#" class="btn-small">Learn More</a>
                     </div>
                 </div>
                 <div class="facility-card">
@@ -1151,6 +1674,7 @@
                     <div class="facility-content">
                         <h3>Swimming Pool</h3>
                         <p>Relax and unwind by our peaceful pool surrounded by lush gardens. The perfect place to cool off after a day of activities.</p>
+                        <a href="#" class="btn-small">Learn More</a>
                     </div>
                 </div>
                 <div class="facility-card">
@@ -1160,6 +1684,7 @@
                     <div class="facility-content">
                         <h3>Ekwena Restaurant</h3>
                         <p>Named after the crocodile, our restaurant represents strength and patience. Enjoy hearty meals prepared with care and traditional flavors.</p>
+                        <a href="#" class="btn-small">Learn More</a>
                     </div>
                 </div>
                 <div class="facility-card">
@@ -1169,6 +1694,7 @@
                     <div class="facility-content">
                         <h3>Etwika Reception</h3>
                         <p>Inspired by the giraffe, our reception stands tall to welcome you with grace and hospitality, making every guest feel at home.</p>
+                        <a href="#" class="btn-small">Learn More</a>
                     </div>
                 </div>
                 <div class="facility-card">
@@ -1178,6 +1704,7 @@
                     <div class="facility-content">
                         <h3>Gym</h3>
                         <p>Stay fit and healthy during your stay with our well-equipped gym, designed to keep your body strong and ready for adventure.</p>
+                        <a href="#" class="btn-small">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -1853,7 +2380,7 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-col">
-                    <h3>About Hunters Paradise Cottages</h3>
+                    <img src="img/white_logo.png" alt="Hunters Paradise Logo" class="footer-logo">
                     <p>A luxurious escape inspired by nature, tradition, and harmony. Our animal-themed cottages offer unique experiences in the heart of Kenya's beautiful landscape.</p>
                 </div>
                 <div class="footer-col">
@@ -1892,9 +2419,15 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
@@ -1902,9 +2435,13 @@
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                header.style.background = 'rgba(255, 248, 240, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(139, 69, 19, 0.1)';
+                document.querySelector('.logo').style.height = '60px';
             } else {
-                header.style.boxShadow = 'none';
+                header.style.background = 'rgba(255, 248, 240, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(139, 69, 19, 0.08)';
+                document.querySelector('.logo').style.height = '70px';
             }
         });
 
@@ -2048,6 +2585,32 @@
                 document.getElementById('excursionType').value = excursionType;
             }
         });
+
+        // Add subtle fade-in animation for sections on scroll
+        const fadeElements = document.querySelectorAll('.about, .accommodation, .facilities, .conference, .excursions, .gallery, .booking, .contact');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        };
+        
+        // Set initial state for fade elements
+        fadeElements.forEach(element => {
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+            element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Trigger once on load in case elements are already in view
+        window.addEventListener('load', fadeInOnScroll);
     </script>
 </body>
 </html>
